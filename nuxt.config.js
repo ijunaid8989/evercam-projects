@@ -37,7 +37,8 @@ export default {
   plugins: [
     '~/plugins/link-resolver.js',
     '~/plugins/html-serializer.js',
-    '~/plugins/prismic-vue.js'
+    '~/plugins/prismic-vue.js',
+    { src: "~/plugins/maps" }
   ],
   /*
   ** Nuxt.js dev-modules

@@ -29,7 +29,11 @@
           </tr>
           <tr>
             <td class="tg-0lax">Location:</td>
-            <td class="tg-0lax">{{location}}</td>
+            <td class="tg-0lax">
+              <gmap-map :center="center" :zoom="10" style="width: 100%; height: 200px">
+                <gmap-marker :position="center"></gmap-marker>
+              </gmap-map>
+            </td>
           </tr>
           <tr v-if="fields.length !== 0" v-for="role in fields" :key="role.id" v-bind:role="role">
             <td class="tg-0lax">{{ getRoleType(role.type) }}</td>
@@ -76,6 +80,10 @@ export default {
         details: project.data.details,
         location: project.data.location,
         formattedDate: Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(project.last_publication_date)),
+        center: {
+          lat: project.data.location.latitude,
+          lng: project.data.location.longitude
+        }
       }
     } catch (e) {
       // Returns error page
